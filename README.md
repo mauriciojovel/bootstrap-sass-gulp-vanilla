@@ -1,6 +1,10 @@
 # Run the project.
 1. Install docker.
-2. Compile source execute:
+3. Install the dependencies:
+```bash
+$ docker-compose run npm-cli yarn install
+```
+2. Compile source code:
 ```bash
 $ docker-compose run npm-cli gulp
 ```

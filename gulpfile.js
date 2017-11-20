@@ -18,9 +18,7 @@ var config = {
   },
   scripts: {
     input: [
-      'node_modules/jquery/dist/jquery.slim.js',
       'node_modules/bootstrap/dist/js/bootstrap.bundle.js',
-      //'node_modules/popper.js/dist/popper.min.js',
       './src/js/*.js'
     ],
     output: './dist/js'
@@ -53,10 +51,10 @@ gulp.task('styles', function () {
 // JS
 gulp.task('js', function () {
   return gulp.src(config.scripts.input, {read: false})
-    // .pipe(tap(function (file) {
-    //   gutil.log('bundling ' + file.path);
-    //   file.contents = browserify(file.path, {debug: true}).bundle();
-    // }))
+    .pipe(tap(function (file) {
+      gutil.log('bundling ' + file.path);
+      file.contents = browserify(file.path, {debug: true}).bundle();
+    }))
     .pipe(buffer())
     .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(uglify())
